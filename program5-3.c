@@ -1,4 +1,4 @@
-/*#include <stdio.h>
+#include <stdio.h>
 #define MAX_STACK_SIZE 10
 
 typedef struct { 
@@ -51,4 +51,4 @@ element pop()
 		exit(1);
 	}
 	else return stack[top--];
-}*/
+}
