@@ -107,5 +107,65 @@
   
   되도록이면 전역변수의 사용은 줄이고, 지역변수를 사용하는 것이 좋다.  또한 지역변수와 전역변수 중에 이름이 같은 변수가 있는 경우에는 지역변수를 우선적으로 접근한다.
   
-  
+**3.2 구조체**
 
+구조체는 우리 일상의 레코드 데이터를 위하여 마련된 C 프로그램의 자료구조로, 다양한 자료형(type)의 연관된 자료를 묶어 새로운 자료형을 만들어 준다. 
+
+- 구조체의 선언
+  - 기본적인 형태 
+  
+    ```c
+    struct member {
+      int id;
+      char name[20];
+      float score;
+    };
+    ```
+    
+    키워드 struct를 이용하여 member를 구조체 태그 이름으로 정하여 중괄호 사이에 연관된 자료를 선언하면  **struct member** 라는 새로운 타입이 생기게 된다.
+    
+  - 형 정의문(typedef)을 이용한 구조체의 선언
+    
+    ```c
+    typedef struct member {
+      int id;
+      char name[20];
+      float score;
+    } example;
+    ```
+    
+    typedef 는 타입을 정의하는 역할을 한다. 다음 선언문에 의하여 struct member 타입은 example로도 정의되어 둘 다 같은 구조체 타입으로 사용할 수 있게 된다.
+    
+    이 경우, example을 구조체 타입명으로 사용한다면 구조체 태그이름 member는 생략할 수 있다.
+    
+    - 이때, 멤버변수 id, name, score은 필드가 되고 이 필드에 할당되는 데이터가 레코드가 된다.
+    
+    - 레코드는 멤버 연산자(.)를 통해 멤버변수에 배정된다.
+    
+  - 구조체를 프로그램에서 변수로 사용
+  
+    ```c
+    example onep, exmember[20];
+    ```
+    
+    위의 선언에 의하여 1개의 레코드를 저장할 수 있는 변수 onep와 20개의 레코드를 저장할 수 있는 example 타입의 배열 exmember을 생성
+    
+  - 구조체의 각 멤버변수에 값을 배정하는 배정문
+    
+    ```c
+    onep.id = 0130;
+    strcpy(onep.name, "CHO YOON SIK");
+    onep.score = 4.5;
+    ```
+  
+  - 구조체배열 exmember안의 데이터중 성적이 4.0 이상인 학생의 id를 출력하는 문장
+
+    ```c
+    for (k = 0; k < 20; k++) {
+      if (exmember[k].score >=  4.0)
+        printf("%d\n", exmember[k].id);
+    }
+    ```
+    
+    
+ 
